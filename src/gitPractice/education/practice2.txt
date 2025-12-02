@@ -5,3 +5,5 @@ restore을 위한 dummy text2
 restore을 위한 dummy text3
 
 cherry-pick 을 위한 commit test
+
+commit amend 연습!
