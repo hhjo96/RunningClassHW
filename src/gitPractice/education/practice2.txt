@@ -7,3 +7,7 @@ restore을 위한 dummy text3
 cherry-pick 을 위한 commit test
 
 commit amend 연습!
+
+conflict-test 브랜치에서 새로운 라인 A1 추가
+conflict-test 브랜치에서 새로운 라인 A2 추가
+conflict-test 브랜치에서 새로운 라인 B1 추가
