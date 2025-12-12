@@ -1,15 +1,18 @@
 package runningClass.HW2;
 
-
+import static runningClass.HW2.GameConstants.*;
 
 public abstract class Characters {
     String name = "";
-    int health = 150;
-    int hunger = 150;
-    int sanity = 150;
-    int damage = 10;
-    int inventory = 15;
+    int health = BASIC;
+    int hunger = BASIC;
+    int sanity = BASIC;
+    int damage = BASIC_ATTACK;
+    int inventory = BASIC_INVENTORY;
     String foodType = "normal";
+
+    static int characterCount = 0;
+    static int battleCount = 0;
 
     public Characters(String name, int health, int hunger, int sanity, int damage, int inventory, String foodType){
         this.name = name;
@@ -19,6 +22,7 @@ public abstract class Characters {
         this.damage = damage;
         this.inventory = inventory;
         this.foodType = foodType;
+        characterCount++;
     }
 
     abstract void ult(Characters target);
@@ -38,6 +42,7 @@ public abstract class Characters {
     };
 
     void getDamage(Characters ch, int damage) {
+        battleCount++;
         if(ch.health - damage <= 0) {
             ch.health = 0;
             System.out.println(ch.name + "가(이) " + damage + "의 데미지를 받고 죽었습니다!");
@@ -48,7 +53,7 @@ public abstract class Characters {
     };
 
     void attackDamage(Characters characters, int damage) {
-        System.out.println(this.name+ "가 공격합니다.");
+        System.out.println(this.name+ "가(이) 공격합니다.");
         getDamage(characters, damage);
     }
 
