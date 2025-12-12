@@ -3,15 +3,21 @@ package runningClass.HW2;
 
 import java.util.Random;
 
+import static runningClass.HW2.GameConstants.*;
+
 public class Main {
-    public static int BASIC = 150;
+
 
     public static void main(String[] args) {
 
-        Characters wilson = new Wilson("윌슨", BASIC, BASIC, BASIC, 10, 15,  "normal");
-        Characters wigfrid = new Wigfrid("위그", BASIC+50, BASIC-30, BASIC-30, 10 * 2, 15, "meatatarian");
-        Characters walter = new Walter("월터", BASIC-20, BASIC-40, BASIC+50, 10, 15, "normal");
-        Characters wurt = new Wurt("워트", BASIC, BASIC+50, BASIC, 10, 15, "vegetarian");
+        Characters wilson
+                = new Wilson("윌슨", BASIC, BASIC, BASIC, BASIC_ATTACK, BASIC_INVENTORY,  "normal");
+        Characters wigfrid
+                = new Wigfrid("위그", HUGE_BASIC, SMALL_BASIC, TINY_BASIC, STRONG_ATTACK, BASIC_INVENTORY, "meatatarian");
+        Characters walter
+                = new Walter("월터", SMALL_BASIC, BIG_BASIC, HUGE_BASIC, BASIC_ATTACK, BASIC_INVENTORY, "normal");
+        Characters wurt
+                = new Wurt("워트", BASIC, HUGE_BASIC, BASIC, BASIC_ATTACK, BASIC_INVENTORY, "vegetarian");
 
         Random random = new Random();
 
@@ -56,11 +62,18 @@ public class Main {
         System.out.println("======일대일 종료!======");
         if(characters[rand1].health > characters[rand2].health) {
             System.out.println(characters[rand1].name + " 승!"+ characters[rand2].name + " 패!");
+            characters[rand2].resurrect();
         } else if(characters[rand1].health < characters[rand2].health) {
             System.out.println(characters[rand2].name + " 승!"+ characters[rand1].name + " 패!");
+            characters[rand2].resurrect();
         } else {
             System.out.println(characters[rand1].name+"와(과) "+ characters[rand2].name + "은(는) 비겼다!");
+            if(characters[rand1].health == 0 && characters[rand2].health == 0) {
+                characters[rand1].resurrect();
+                characters[rand2].resurrect();
+            }
         }
 
+        System.out.println("캐릭터 생성 횟수: "+ Characters.characterCount + " 전투 횟수: " + Characters.battleCount);
     }
 }

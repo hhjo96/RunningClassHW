@@ -1,5 +1,7 @@
 package runningClass.HW2;
 
+import static runningClass.HW2.GameConstants.*;
+
 //월터: 전용 탈것이 있음, 맞은만큼 정신력도 깎임
 public class Walter extends Characters implements Ranged {
     public Walter(String name, int health, int hunger, int sanity, int damage, int inventory, String foodType) {
@@ -10,13 +12,13 @@ public class Walter extends Characters implements Ranged {
 
     void ult(Characters target) {
         System.out.println(this.name + "의 궁");
-        getDamage(target, this.damage * 10);
+        getDamage(target, STRONG_ULT_ATTACK);
     }
 
     @Override
     public void kite(Characters target) {
         System.out.println(this.name + "의 원거리 공격");
-        getDamage(target, this.damage - 10);
+        getDamage(target, BASIC_KITE);
     }
 
     public void ownSkill() {
