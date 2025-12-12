@@ -25,7 +25,7 @@ public abstract class Characters {
         characterCount++;
     }
 
-    abstract void ult(Characters target);
+    abstract void ult(Characters ch);
     abstract void ownSkill();
 
     void fillHealth(int health) {
